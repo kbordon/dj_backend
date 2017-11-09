@@ -38,32 +38,37 @@ namespace DJ.Controllers
       DateTime start = Convert.ToDateTime(Request.Form["event-start"]);
       DateTime end = Convert.ToDateTime(Request.Form["event-end"]);
       Event newEvent = new Event(start, end, Request.Form["event-name"], Request.Form["venue-name"], Request.Form["venue-address"]);
+      Dictionary<string,object> model = new Dictionary<string, object>{};
+      List<Event> allEvents = Event.GetAll();
+      model.Add("all-events", allEvents);
       try
       {
-        //Checks that input start time and end time are valid.
         if (end.Subtract(start).TotalHours < 1)
         {
           throw new InvalidStartOrEndException();
         }
+        else if (newEvent.ChecksIfDatesOverlap())
+        {
+            throw new InvalidStartOrEndException("Overlap");
+        }
         newEvent.Save();
-        return RedirectToAction("Events");
+        return RedirectToAction("EventForm");
+      }
+      catch (InvalidStartOrEndException ex) when (ex.Message == "Overlap")
+      {
+        model.Add("error", 2);
+        // return View("EventForm", model);
       }
       catch (InvalidStartOrEndException ex)
       {
-        Dictionary<string,object> model = new Dictionary<string, object>{};
-        List<Event> allEvents = Event.GetAll();
-        model.Add("all-events", allEvents);
         model.Add("error", 1);
-        return View("EventForm", model);
+        // return View("EventForm", model);
       }
       catch (MySqlException ex)
       {
-        Dictionary<string,object> model = new Dictionary<string, object>{};
-        List<Event> allEvents = Event.GetAll();
-        model.Add("all-events", allEvents);
         model.Add("error", 2);
-        return View("EventForm", model);
       }
+      return View("EventForm", model);
     }
 
     // Go to page with events to edit.
@@ -107,6 +112,9 @@ namespace DJ.Controllers
       DateTime start = Convert.ToDateTime(Request.Form["event-start"]);
       DateTime end = Convert.ToDateTime(Request.Form["event-end"]);
       Event selectedEvent = new Event(start, end, Request.Form["event-name"], Request.Form["venue-name"], Request.Form["venue-address"], id);
+      Dictionary<string,object> model = new Dictionary<string, object>{};
+      List<Event> allEvents = Event.GetAll();
+      model.Add("all-events", allEvents);
       try
       {
         //Checks that input start time and end time are valid.
@@ -114,26 +122,27 @@ namespace DJ.Controllers
         {
           throw new InvalidStartOrEndException();
         }
+        else if (newEvent.ChecksIfDatesOverlap())
+        {
+            throw new InvalidStartOrEndException("Overlap");
+        }
           selectedEvent.Update();
           return RedirectToAction("EventsEdit");
           // Maybe this should be a success page instead.
       }
+      catch (InvalidStartOrEndException ex) when (ex.Message == "Overlap")
+      {
+        model.Add("error", 2);
+      }
       catch (InvalidStartOrEndException ex)
       {
-        Dictionary<string,object> model = new Dictionary<string, object>{};
-        List<Event> allEvents = Event.GetAll();
-        model.Add("all-events", allEvents);
         model.Add("error", 1);
-        return View("EventEdit", model);
       }
       catch (MySqlException ex)
       {
-        Dictionary<string,object> model = new Dictionary<string, object>{};
-        List<Event> allEvents = Event.GetAll();
-        model.Add("all-events", allEvents);
         model.Add("error", 2);
-        return View("EventEdit", model);
       }
+      return View("EventEdit", model);
     }
 
     [HttpPost("/events/admin/delete/{id}")]

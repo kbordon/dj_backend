@@ -49,7 +49,7 @@ namespace DJ.Models
         }
 
         // To prevent overlap, validate dates.
-        public bool ValidateDates()
+        public bool ChecksIfDatesOverlap()
         {
           MySqlConnection conn = DB.Connection();
           conn.Open();
@@ -67,11 +67,11 @@ namespace DJ.Models
           Console.WriteLine(overlappingDates);
           if (overlappingDates > 0)
           {
-            return false;
+            return true;
           }
           else
           {
-            return true;
+            return false;
           }
         }
 

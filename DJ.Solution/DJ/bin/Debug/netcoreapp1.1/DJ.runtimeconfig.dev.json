@@ -1,7 +1,7 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/Users/Guest/.nuget/packages"
+      "C:\\Users\\kbord\\.nuget\\packages"
     ]
   }
 }

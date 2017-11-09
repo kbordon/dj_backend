@@ -14,3 +14,12 @@
 /Users/Guest/Desktop/djsacrilicious/DJ.Solution/DJ/obj/Debug/netcoreapp1.1/DJ.AssemblyInfo.cs
 /Users/Guest/Desktop/djsacrilicious/DJ.Solution/DJ/obj/Debug/netcoreapp1.1/DJ.dll
 /Users/Guest/Desktop/djsacrilicious/DJ.Solution/DJ/obj/Debug/netcoreapp1.1/DJ.pdb
+C:\Users\kbord\desktop\djsacrilicious\DJ.Solution\dj\bin\Debug\netcoreapp1.1\DJ.deps.json
+C:\Users\kbord\desktop\djsacrilicious\DJ.Solution\dj\bin\Debug\netcoreapp1.1\DJ.runtimeconfig.json
+C:\Users\kbord\desktop\djsacrilicious\DJ.Solution\dj\bin\Debug\netcoreapp1.1\DJ.runtimeconfig.dev.json
+C:\Users\kbord\desktop\djsacrilicious\DJ.Solution\dj\obj\Debug\netcoreapp1.1\DJ.csproj.CoreCompileInputs.cache
+C:\Users\kbord\desktop\djsacrilicious\DJ.Solution\dj\obj\Debug\netcoreapp1.1\DJ.AssemblyInfo.cs
+C:\Users\kbord\desktop\djsacrilicious\DJ.Solution\dj\obj\Debug\netcoreapp1.1\DJ.dll
+C:\Users\kbord\desktop\djsacrilicious\DJ.Solution\dj\obj\Debug\netcoreapp1.1\DJ.pdb
+C:\Users\kbord\desktop\djsacrilicious\DJ.Solution\dj\bin\Debug\netcoreapp1.1\DJ.dll
+C:\Users\kbord\desktop\djsacrilicious\DJ.Solution\dj\bin\Debug\netcoreapp1.1\DJ.pdb
